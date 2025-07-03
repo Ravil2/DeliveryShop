@@ -61,13 +61,15 @@ const ProductCard = ({
             </div>
             <p className="text-[#bfbfbf] text-[8px] md:text-xs">С картой</p>
           </div>
-          <div className="flex flex-col gap-x-1">
-            <div className="flex flex-row gap-x-1 text-xs md:text-base text-[#606060]">
-              <span>{formatPrice(finalPrice)}</span>
-              <span>₽</span>
+          {finalPrice !== basePrice && (
+            <div className="flex flex-col gap-x-1">
+              <div className="flex flex-row gap-x-1 text-xs md:text-base text-[#606060]">
+                <span>{formatPrice(finalPrice)}</span>
+                <span>₽</span>
+              </div>
+              <p className="text-[#bfbfbf] text-[8px] md:text-xs">Обычная</p>
             </div>
-            <p className="text-[#bfbfbf] text-[8px] md:text-xs">Обычная</p>
-          </div>
+          )}
         </div>
         <div className="h-13.5 text-xs md:text-base text-[#414141] line-clamp-3 md:line-clamp-2 leading-[1.5]">
           Это пример описания товара. Здесь может быть до трёх строк текста.
