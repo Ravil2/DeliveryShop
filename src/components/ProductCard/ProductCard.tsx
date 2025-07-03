@@ -1,11 +1,36 @@
+import { IProductCardProps } from '@/types/product';
 import Image from 'next/image';
 
-const ProductCard = () => {
+const ProductCard = ({
+  img,
+  description,
+  basePrice,
+  discountPercent,
+  rating,
+}: IProductCardProps) => {
+  const cardDiscountPercent = 6;
+
+  const calculateFinalPrice = (price: number, discount: number): number => {
+    return discount > 0 ? price * (1 - discount / 100) : price;
+  };
+
+  const calculatePriceByCard = (price: number, discount: number): number => {
+    return calculateFinalPrice(price, discount);
+  };
+
+  const finalPrice = calculateFinalPrice(basePrice, discountPercent);
+
+  const priceByCard = calculatePriceByCard(finalPrice, cardDiscountPercent);
+
+  const formatPrice = (price: number): string => {
+    return price.toFixed(2).replace('.', ',');
+  };
+
   return (
     <div className="flex flex-col justify-between w-40 rounded overflow-hidden bg-white md:w-[224px] xl:w-[272px] align-top p-0 hover:shadow-(--shadow-article) duration-300">
       <div className="relative w-40 h-40 md:w-[224px] xl:w-[272px]">
         <Image
-          src="/images/products/img-3.jpeg"
+          src={img}
           alt="Акция"
           fill
           className="object-cover"
@@ -20,23 +45,25 @@ const ProductCard = () => {
             sizes="24px"
           />
         </button>
-        <div className="absolute bg-[#ff6633] py-1 px-2 rounded text-white bottom-2.5 left-2.5">
-          -10%
-        </div>
+        {discountPercent > 0 && (
+          <div className="absolute bg-[#ff6633] py-1 px-2 rounded text-white bottom-2.5 left-2.5">
+            -{discountPercent}%
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col justify-between p-2 gap-y-2">
         <div className="flex flex-row justify-between items-end">
           <div className="flex flex-col gap-x-1">
             <div className="flex flex-row gap-x-1 text-sm md:text-lg font-bold">
-              <span>199</span>
+              <span>{formatPrice(priceByCard)}</span>
               <span>₽</span>
             </div>
             <p className="text-[#bfbfbf] text-[8px] md:text-xs">С картой</p>
           </div>
           <div className="flex flex-col gap-x-1">
             <div className="flex flex-row gap-x-1 text-xs md:text-base text-[#606060]">
-              <span>210</span>
+              <span>{formatPrice(finalPrice)}</span>
               <span>₽</span>
             </div>
             <p className="text-[#bfbfbf] text-[8px] md:text-xs">Обычная</p>

@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <main className="w-full mx-auto mb-20">
       <Slider />
-      <Actions />
+      <div className="px-[max(12,calc((100%-1208px)))] flex flex-col gap-y-20 md:mb-25 xl:mb-30">
+        <Actions />
+      </div>
     </main>
   );
 }
