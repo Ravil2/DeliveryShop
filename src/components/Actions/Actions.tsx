@@ -27,7 +27,7 @@ const Actions = () => {
           </button>
         </div>
         <ul className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 xl:gap-10 justify-items-center">
-          {actionPRoducts.map((item, index) => (
+          {actionPRoducts.slice(0, 4).map((item, index) => (
             <li
               key={item.id}
               className={`${index >= 4 ? 'hidden' : ''}

@@ -1,5 +1,9 @@
 import { IProductCardProps } from '@/types/product';
+import { p } from 'motion/react-client';
 import Image from 'next/image';
+import { formatPrice } from '../../../utils/formatPrice';
+
+const cardDiscountPercent = 6;
 
 const ProductCard = ({
   img,
@@ -8,8 +12,6 @@ const ProductCard = ({
   discountPercent,
   rating,
 }: IProductCardProps) => {
-  const cardDiscountPercent = 6;
-
   const calculateFinalPrice = (price: number, discount: number): number => {
     return discount > 0 ? price * (1 - discount / 100) : price;
   };
@@ -21,10 +23,6 @@ const ProductCard = ({
   const finalPrice = calculateFinalPrice(basePrice, discountPercent);
 
   const priceByCard = calculatePriceByCard(finalPrice, cardDiscountPercent);
-
-  const formatPrice = (price: number): string => {
-    return price.toFixed(2).replace('.', ',');
-  };
 
   return (
     <div className="flex flex-col justify-between w-40 rounded overflow-hidden bg-white md:w-[224px] xl:w-[272px] align-top p-0 hover:shadow-(--shadow-article) duration-300">
@@ -59,9 +57,11 @@ const ProductCard = ({
               <span>{formatPrice(priceByCard)}</span>
               <span>₽</span>
             </div>
-            <p className="text-[#bfbfbf] text-[8px] md:text-xs">С картой</p>
+            {cardDiscountPercent > 0 && (
+              <p className="text-[#bfbfbf] text-[8px] md:text-xs">С картой</p>
+            )}
           </div>
-          {finalPrice !== basePrice && (
+          {finalPrice !== basePrice && cardDiscountPercent > 0 && (
             <div className="flex flex-col gap-x-1">
               <div className="flex flex-row gap-x-1 text-xs md:text-base text-[#606060]">
                 <span>{formatPrice(finalPrice)}</span>
@@ -72,9 +72,9 @@ const ProductCard = ({
           )}
         </div>
         <div className="h-13.5 text-xs md:text-base text-[#414141] line-clamp-3 md:line-clamp-2 leading-[1.5]">
-          Это пример описания товара. Здесь может быть до трёх строк текста.
+          {description}
         </div>
-        <p>Рейтинг 4.8</p>
+        {rating > 0 && <p>рейтинг {rating}</p>}
         <button className="border border-(--color-primary) hover:text-white hover:bg-[#ff6633] hover:border-transparent active:shadow-(--shadow-button-active) w-full h-10 rounded p-2 justify-center items-center text-(--color-primary) transition-all duration-300 cursor-pointer select-none">
           В корзину
         </button>

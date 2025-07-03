@@ -6,6 +6,6 @@ export interface IProductCardProps {
   basePrice: number;
   discountPercent: number;
   rating: number;
-  weight?: number;
+  weight?: string;
   volume?: string;
 }
