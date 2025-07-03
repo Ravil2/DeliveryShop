@@ -14,7 +14,7 @@ export default function SlideOne() {
             src="/images/graphics/food.png"
             alt="slide"
             fill
-            sizes="(max-width: 768px) 50px, (max-width: 1200px) 75px, 100px"
+            sizes="(max-width: 768px) 50px, (max-width: 1200px) 75px, 150px"
           />
         </div>
 
