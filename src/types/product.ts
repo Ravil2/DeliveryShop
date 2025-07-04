@@ -3,6 +3,7 @@ export interface IProductCardProps {
   img: string;
   title: string;
   description: string;
+  categories?: string;
   basePrice: number;
   discountPercent: number;
   rating: number;

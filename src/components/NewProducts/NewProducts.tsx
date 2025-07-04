@@ -3,16 +3,18 @@ import database from '@/data/database.json';
 import { IProductCardProps } from '@/types/product';
 import ProductCard from '../ProductCard/ProductCard';
 
-const Actions = () => {
-  const actionPRoducts = database.products.filter(p =>
-    p.categories.includes('actions'),
+const NewProducts = () => {
+  const newPRoducts = database.products.filter(p =>
+    p.categories?.includes('new'),
   );
 
   return (
     <section>
       <div className="flex flex-col justify-center xl:max-w-[1208px]">
         <div className="mb-4 md:mb-8 xl:mb-10 flex flex-row justify-between">
-          <h2 className="text-2xl xl:text-4xl text-left font-bold text-[#414141]">Акции</h2>
+          <h2 className="text-2xl xl:text-4xl text-left font-bold text-[#414141]">
+            Новинки
+          </h2>
           <button className="flex flex-row items-center gap-x-2 cursor-pointer">
             <p className="text-base text-center text-[#606060] hover:text-[#bfbfbf] duration-300">
               Все акции
@@ -27,7 +29,7 @@ const Actions = () => {
           </button>
         </div>
         <ul className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 xl:gap-10 justify-items-center">
-          {actionPRoducts.slice(0, 4).map((item, index) => (
+          {newPRoducts.slice(0, 4).map((item, index) => (
             <li
               key={item.id}
               className={`${index >= 4 ? 'hidden' : ''}
@@ -44,4 +46,4 @@ const Actions = () => {
   );
 };
 
-export default Actions;
+export default NewProducts;
