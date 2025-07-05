@@ -5,7 +5,7 @@ export interface IProductCardProps {
   description: string;
   categories?: string;
   basePrice: number;
-  discountPercent: number;
+  discountPercent?: number;
   rating: number;
   weight?: string;
   volume?: string;
