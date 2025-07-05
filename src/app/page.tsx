@@ -2,6 +2,7 @@ import Actions from '@/components/Actions/Actions';
 import NewProducts from '@/components/NewProducts/NewProducts';
 import Purchases from '@/components/Purchases/Purchases';
 import Slider from '@/components/Slider/Slider';
+import SpecialOffers from '@/components/SpecialOffer/SpecialOffer';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Actions />
         <NewProducts />
         <Purchases />
+        <SpecialOffers />
       </div>
     </main>
   );
