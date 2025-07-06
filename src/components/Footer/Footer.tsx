@@ -36,7 +36,7 @@ const Footer = () => {
           </div>
           <div className="flex gap-x-5 items-start">
             <a
-              href="https://wa.me/78007773333"
+              href="https://wa.me/77777777777"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -49,7 +49,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="https://t.me/alexeirybak"
+              href="https://t.me/Zyko2442"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -66,7 +66,7 @@ const Footer = () => {
 
         <div className="phone">
           <a
-            href="tel:+78007773333"
+            href="tel:+77777777777"
             className="flex items-center gap-x-2 hover:opacity-80 transition-opacity duration-300"
           >
             <Image
@@ -77,7 +77,7 @@ const Footer = () => {
               className="hover:opacity-80 transition-opacity duration-300"
             />
             <p className="text-base hover:text-black duration-300">
-              8 800 777 33 33
+              8 777 777 77 77
             </p>
           </a>
         </div>
@@ -103,7 +103,7 @@ const Footer = () => {
         </nav>
 
         <div className="design">
-          <a href="https://zasovskiy.ru/" target="_blank">
+          <a href="https://guns.lol/zyko2442" target="_blank">
             <Image
               src="/icons-footer/design.png"
               alt="Дизайнер"
