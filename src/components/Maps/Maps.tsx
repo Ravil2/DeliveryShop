@@ -1,71 +1,7 @@
 'use client';
+import { locations } from '@/data/locations';
 import { Map, YMaps, Placemark } from '@pbe/react-yandex-maps';
 import { useState } from 'react';
-
-const locations = {
-  almaty: {
-    name: 'Алматы',
-    center: [43.238949, 76.889709],
-    shops: [
-      { id: 1, coordinates: [43.24, 76.89], name: 'Магазин Ravil (Алматы)' },
-    ],
-  },
-  talgar: {
-    name: 'Талгар',
-    center: [43.3051, 77.2405],
-    shops: [
-      { id: 2, coordinates: [43.3055, 77.241], name: 'Магазин Ravil (Талгар)' },
-    ],
-  },
-  esik: {
-    name: 'Байсерке',
-    center: [43.4798, 77.0355],
-    shops: [
-      {
-        id: 3,
-        coordinates: [43.4798, 77.0355],
-        name: 'Магазин Ravil (Байсерке)',
-      },
-    ],
-  },
-  gress: {
-    name: 'Гресс',
-    center: [43.416, 77.0241],
-    shops: [
-      {
-        id: 4,
-        coordinates: [43.416, 77.0241],
-        name: 'Магазин Ravil (Грес)',
-      },
-      {
-        id: 5,
-        coordinates: [43.416, 77.0141],
-        name: 'Магазин Ravil (Грес)',
-      },
-    ],
-  },
-  pokrovka: {
-    name: 'Покровка',
-    center: [43.4046, 77.0092],
-    shops: [
-      {
-        id: 6,
-        coordinates: [43.4046, 77.0114],
-        name: 'Магазин Ravil (Покровка)',
-      },
-      {
-        id: 7,
-        coordinates: [43.4051, 77.0092],
-        name: 'Магазин Ravil (Покровка)',
-      },
-      {
-        id: 8,
-        coordinates: [43.4055, 77.012],
-        name: 'Магазин Ravil (Покровка)',
-      },
-    ],
-  },
-};
 
 export default function Maps() {
   const [currentLocation, setCurrentLocation] = useState('almaty');
@@ -84,7 +20,7 @@ export default function Maps() {
             Наши магазины
           </h2>
           <div className="flex flex-wrap gap-x-2 gap-y-3 mb-5">
-            {(Object.keys(locations) as LocationKey[]).map(key => {
+            {Object.keys(locations).map(key => {
               const isActive = currentLocation === key;
               return (
                 <button
