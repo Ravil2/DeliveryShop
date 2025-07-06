@@ -40,28 +40,30 @@ export default function Maps() {
               );
             })}
           </div>
-          <Map
-            defaultState={{ center: currentLocationData.center, zoom: 13 }}
-            state={{ center: currentLocationData.center, zoom: 15 }}
-            width="1208px"
-            height="354px"
-          >
-            {locations[currentLocation].shops.map(shop => (
-              <Placemark
-                key={shop.id}
-                geometry={shop.coordinates}
-                properties={{
-                  hintContent: shop.name,
-                }}
-                options={{
-                  iconLayout: 'default#image',
-                  iconImageHref: '/icons-map/icon-location.svg',
-                  iconImageSize: [32, 32],
-                  iconImageOffset: [-16, -16],
-                }}
-              />
-            ))}
-          </Map>
+          <div className="max-w-[1208px] overflow-hidden">
+            <Map
+              defaultState={{ center: currentLocationData.center, zoom: 13 }}
+              state={{ center: currentLocationData.center, zoom: 15 }}
+              width="1208px"
+              height="354px"
+            >
+              {locations[currentLocation].shops.map(shop => (
+                <Placemark
+                  key={shop.id}
+                  geometry={shop.coordinates}
+                  properties={{
+                    hintContent: shop.name,
+                  }}
+                  options={{
+                    iconLayout: 'default#image',
+                    iconImageHref: '/icons-map/icon-location.svg',
+                    iconImageSize: [32, 32],
+                    iconImageOffset: [-16, -16],
+                  }}
+                />
+              ))}
+            </Map>
+          </div>
         </div>
       </section>
     </YMaps>
