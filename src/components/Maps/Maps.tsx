@@ -12,6 +12,7 @@ export default function Maps() {
       query={{
         lang: 'ru_RU',
         apikey: '1ac61b8a-843f-454f-abd8-a651a3c60f00',
+        load: 'package.full',
       }}
     >
       <section>
@@ -49,6 +50,9 @@ export default function Maps() {
               <Placemark
                 key={shop.id}
                 geometry={shop.coordinates}
+                properties={{
+                  hintContent: shop.name,
+                }}
                 options={{
                   iconLayout: 'default#image',
                   iconImageHref: '/icons-map/icon-location.svg',
