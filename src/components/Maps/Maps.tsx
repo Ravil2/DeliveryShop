@@ -1,5 +1,5 @@
 'use client';
-import { Map, YMaps } from '@pbe/react-yandex-maps';
+import { Map, YMaps, Placemark } from '@pbe/react-yandex-maps';
 import { useState } from 'react';
 
 const locations = {
@@ -21,17 +21,26 @@ const locations = {
     name: 'Байсерке',
     center: [43.4798, 77.0355],
     shops: [
-      { id: 3, coordinates: [43.353, 77.4532], name: 'Магазин Ravil (Есик)' },
+      {
+        id: 3,
+        coordinates: [43.4798, 77.0355],
+        name: 'Магазин Ravil (Байсерке)',
+      },
     ],
   },
-  kaptchagai: {
+  gress: {
     name: 'Гресс',
     center: [43.416, 77.0241],
     shops: [
       {
         id: 4,
-        coordinates: [43.846, 77.0825],
-        name: 'Магазин Ravil (Капчагай)',
+        coordinates: [43.416, 77.0241],
+        name: 'Магазин Ravil (Грес)',
+      },
+      {
+        id: 5,
+        coordinates: [43.416, 77.0141],
+        name: 'Магазин Ravil (Грес)',
       },
     ],
   },
@@ -40,8 +49,18 @@ const locations = {
     center: [43.4046, 77.0092],
     shops: [
       {
-        id: 5,
-        coordinates: [43.907, 77.012],
+        id: 6,
+        coordinates: [43.4046, 77.0114],
+        name: 'Магазин Ravil (Покровка)',
+      },
+      {
+        id: 7,
+        coordinates: [43.4051, 77.0092],
+        name: 'Магазин Ravil (Покровка)',
+      },
+      {
+        id: 8,
+        coordinates: [43.4055, 77.012],
         name: 'Магазин Ravil (Покровка)',
       },
     ],
@@ -89,7 +108,20 @@ export default function Maps() {
             state={{ center: currentLocationData.center, zoom: 15 }}
             width="1208px"
             height="354px"
-          />
+          >
+            {locations[currentLocation].shops.map(shop => (
+              <Placemark
+                key={shop.id}
+                geometry={shop.coordinates}
+                options={{
+                  iconLayout: 'default#image',
+                  iconImageHref: '/icons-map/icon-location.svg',
+                  iconImageSize: [32, 32],
+                  iconImageOffset: [-16, -16],
+                }}
+              />
+            ))}
+          </Map>
         </div>
       </section>
     </YMaps>
