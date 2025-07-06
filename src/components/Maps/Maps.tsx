@@ -18,15 +18,15 @@ const locations = {
     ],
   },
   esik: {
-    name: 'Есик',
-    center: [43.3525, 77.4528],
+    name: 'Байсерке',
+    center: [43.4798, 77.0355],
     shops: [
       { id: 3, coordinates: [43.353, 77.4532], name: 'Магазин Ravil (Есик)' },
     ],
   },
   kaptchagai: {
-    name: 'Капчагай',
-    center: [43.8456, 77.0818],
+    name: 'Гресс',
+    center: [43.416, 77.0241],
     shops: [
       {
         id: 4,
@@ -37,7 +37,7 @@ const locations = {
   },
   pokrovka: {
     name: 'Покровка',
-    center: [43.9065, 77.0117],
+    center: [43.4046, 77.0092],
     shops: [
       {
         id: 5,
@@ -65,14 +65,28 @@ export default function Maps() {
             Наши магазины
           </h2>
           <div className="flex flex-wrap gap-x-2 gap-y-3 mb-5">
-            {(Object.keys(locations) as LocationKey[]).map(key => (
-              <button key={key} onClick={() => setCurrentLocation(key)}>
-                {locations[key].name}
-              </button>
-            ))}
+            {(Object.keys(locations) as LocationKey[]).map(key => {
+              const isActive = currentLocation === key;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setCurrentLocation(key)}
+                  className={`p-2 text-xs md:text-sm justify-center items-center
+                  active:shadow-(--shadow-button-active) 
+                  border-none rounded cursor-pointer transition-colors duration-300 ${
+                    isActive
+                      ? 'bg-(--color-primary) text-white hover: shadow-(--shadow-button-default)'
+                      : 'bg-[#f3f2f1] hover:shadow-(--shadow-button-secondary)'
+                  }`}
+                >
+                  {locations[key].name}
+                </button>
+              );
+            })}
           </div>
           <Map
             defaultState={{ center: currentLocationData.center, zoom: 13 }}
+            state={{ center: currentLocationData.center, zoom: 15 }}
             width="1208px"
             height="354px"
           />
